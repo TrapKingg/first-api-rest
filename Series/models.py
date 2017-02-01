@@ -16,9 +16,11 @@ class actor(models.Model):
     actors_ppoi = PPOIField()
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default='Select Gender')
     age = models.IntegerField()
-    #owner = models.ForeignKey(User, editable=False)
+    owner = models.ForeignKey(User, related_name='actors', on_delete=models.CASCADE)
 
     def __unicode__(self):
+        return '%s %s' % (self.first_name, self.last_name)
+    def get_full_name(self):
         return '%s %s' % (self.first_name, self.last_name)
 
 # def generate_filename(self, filename):
@@ -33,7 +35,7 @@ class serie(models.Model):
     release = models.DateField()
     review = models.TextField()
     seasons = models.IntegerField()
-    #owner = models.ForeignKey(User, editable=False)
+    owner = models.ForeignKey(User, related_name='series', on_delete=models.CASCADE)
 
     def __unicode__(self):
         return '%s' % (self.name)

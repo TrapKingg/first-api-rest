@@ -2,12 +2,14 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+from django.conf import settings
 import versatileimagefield.fields
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
@@ -21,6 +23,7 @@ class Migration(migrations.Migration):
                 ('actors_ppoi', versatileimagefield.fields.PPOIField(default='0.5x0.5', max_length=20, editable=False)),
                 ('gender', models.CharField(default=b'Select Gender', max_length=10, choices=[(b'M', b'Male'), (b'F', b'Female'), (b'O', b'Other')])),
                 ('age', models.IntegerField()),
+                ('owner', models.ForeignKey(related_name='actors', to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
@@ -34,6 +37,7 @@ class Migration(migrations.Migration):
                 ('review', models.TextField()),
                 ('seasons', models.IntegerField()),
                 ('actors', models.ManyToManyField(to='Series.actor')),
+                ('owner', models.ForeignKey(related_name='series', to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]
