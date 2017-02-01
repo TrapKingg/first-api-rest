@@ -39,7 +39,24 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'Series',
     'rest_framework',
+    'versatileimagefield',
 )
+#thumbnail
+VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
+    'image_cut': [
+        ('full_size', 'url'),
+        ('thumbnail', 'thumbnail__100x100'),
+        ('medium_square_crop', 'crop__400x400'),
+        ('small_square_crop', 'crop__50x50')
+    ]
+}
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.DjangoModelPermissions',
+    ],
+    'PAGE_SIZE': 10
+}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
