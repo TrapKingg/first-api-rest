@@ -24,6 +24,8 @@ from Series import views
 router = routers.DefaultRouter()
 router.register(r'actors', views.actorViewSet)
 router.register(r'series', views.serieViewSet)
+router.register(r'users', views.UserList)
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

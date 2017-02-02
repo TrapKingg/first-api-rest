@@ -24,10 +24,10 @@ class serieSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'name', 'actors', 'pic', 'release', 'review', 'seasons', 'owner')
 
 #############################->ESTO SE BORRA SI NO FUNCIONA
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     actors = serializers.PrimaryKeyRelatedField(many=True, queryset=actor.objects.all())
     series = serializers.PrimaryKeyRelatedField(many=True, queryset=serie.objects.all())
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'actors', 'series')
+        fields = ('url', 'username', 'actors', 'series')
