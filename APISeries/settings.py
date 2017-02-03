@@ -33,13 +33,24 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Series',
+
     'rest_framework',
+    'rest_framework.authtoken',
     'versatileimagefield',
+
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
 )
 #thumbnail
 VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
@@ -125,3 +136,17 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
 MEDIA_URL = '/uploads/'
+
+# SENDGRID_API_KEY = ''
+# EMAIL_BACKEND = "sgbackend.SendGridBackend"
+# # SENDGRID_USER = ""
+# # SENDGRID_PASSWORD = ""
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+
+#allauth stuff
+
+SITE_ID = 1
